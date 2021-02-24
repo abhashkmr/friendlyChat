@@ -2,12 +2,14 @@ package com.example.friendlychat;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.module.AppGlideModule;
 
 import com.bumptech.glide.Glide;
 
@@ -30,13 +32,16 @@ public class MessageAdapter extends ArrayAdapter<FriendlyMessage> {
 
         FriendlyMessage message = getItem(position);
 
-        boolean isPhoto = message.getPhotoUrl() != null;
+        boolean isPhoto = message.getPhotoUrl() !=null;
         if (isPhoto) {
             messageTextView.setVisibility(View.GONE);
             photoImageView.setVisibility(View.VISIBLE);
+
             Glide.with(photoImageView.getContext())
-                    .load(message.getPhotoUrl())
+                    .load((message.getPhotoUrl()))
+                   //.load("https://firebasestorage.googleapis.com/v0/b/friendlychat-dff31.appspot.com/o/chat_photos%2Fimage%3A5348?alt=media&token=2501b11f-d36c-490e-ba0c-eb2e655a40be")
                     .into(photoImageView);
+
         } else {
             messageTextView.setVisibility(View.VISIBLE);
             photoImageView.setVisibility(View.GONE);

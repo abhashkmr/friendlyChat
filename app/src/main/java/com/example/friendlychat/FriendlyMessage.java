@@ -1,10 +1,14 @@
 package com.example.friendlychat;
 
+import android.net.Uri;
+
+import com.google.android.gms.tasks.Task;
+
 public class FriendlyMessage{
 
     private String text;
     private String name;
-    private String photoUrl;
+    String photoUrl;
 
     public FriendlyMessage() {
     }
